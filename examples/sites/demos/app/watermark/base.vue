@@ -20,8 +20,8 @@ const removeWatermark = () => {
       markType="image"
       :markText="['kif', 'tinyvue', 'kif1']"
       image="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*lkAoRbywo0oAAAAAAAAAAAAADrJ8AQ/original"
-      fullScreen
       style="height: 200px; width: 500px"
+      :fullScreen="true"
     />
     <TinyButton ref="buttRef" @click="removeWatermark">移除水印</TinyButton>
   </div>
