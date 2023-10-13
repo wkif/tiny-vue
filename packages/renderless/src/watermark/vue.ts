@@ -1,9 +1,11 @@
 import { watermark, unsetWatermark } from './index'
 export const api = ['state', 'unsetWatermark']
 export const renderless = (props, { toRefs, onMounted, onUnmounted }, { refs }): Record<string, any> => {
-  const { markType, markText, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity } = toRefs(props)
+  const { id, markType, markText, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity } =
+    toRefs(props)
   onMounted(() => {
     watermark(
+      id.value,
       markType.value,
       markText.value,
       refs,

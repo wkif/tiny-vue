@@ -1,29 +1,15 @@
 <script setup lang="ts">
-import { Watermark, Button as TinyButton } from '@opentiny/vue'
-import { onUnmounted, ref } from 'vue'
-const waterMarkRef = ref()
-const buttRef = ref()
-onUnmounted(() => {
-  console.log('waterMarkRef', waterMarkRef)
-  // waterMarkRef.value.removeWatermark()
-})
-const removeWatermark = () => {
-  console.log('waterMarkRef', waterMarkRef)
-  waterMarkRef.value.unsetWatermark()
-}
+import { Watermark } from '@opentiny/vue'
 </script>
 
 <template>
   <div>
     <Watermark
-      ref="waterMarkRef"
+      id="waterMark"
       markType="image"
-      :markText="['kif', 'tinyvue', 'kif1']"
-      image="https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*lkAoRbywo0oAAAAAAAAAAAAADrJ8AQ/original"
-      style="height: 200px; width: 500px"
-      :fullScreen="true"
+      image="https://res.hc-cdn.com/tinyui-design-common/1.0.5.20230707170109/assets/opentiny-logo.svg"
+      style="height: 200px; width: 100%"
     />
-    <TinyButton ref="buttRef" @click="removeWatermark">移除水印</TinyButton>
   </div>
 </template>
 

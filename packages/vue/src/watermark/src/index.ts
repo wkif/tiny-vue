@@ -16,7 +16,10 @@ export default defineComponent({
       default: () => $constants
     },
     modelValue: String,
-
+    id: {
+      type: String,
+      default: ''
+    },
     markType: {
       type: String,
       default: 'text'

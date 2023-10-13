@@ -1,7 +1,10 @@
+// const id = 'ZxqkLTN5ZgQLauJKxTjz86Gr5y'
+
 export const watermark = (
+  id: string,
   markType: string,
   str: string,
-  refs: any,
+  refs: Ref<HTMLElement>,
   fullScreen: boolean,
   rotate: number,
   zIndex: string,
@@ -11,20 +14,15 @@ export const watermark = (
   image: string,
   opacity: string
 ) => {
-  let id = setWatermark(refs, markType, str, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity)
-  //   setInterval(() => {
-  //     if (id && document.getElementById(id) === null) {
-  //       id = setWatermark(refs, markType, str, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity)
-  //     }
-  //   }, 500)
+  setWatermark(id, refs, markType, str, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity)
   window.onresize = () => {
-    setWatermark(refs, markType, str, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity)
+    setWatermark(id, refs, markType, str, fullScreen, rotate, zIndex, font, fillStyle, textAlign, image, opacity)
   }
 }
 
-export const removeWatermark = (refs: any, fullScreen: boolean) => {
-  const id = 'ZxqkLTN5ZgQLauJKxTjz86Gr5y'
+export const removeWatermark = (id: string, refs: Ref<HTMLElement>, fullScreen: boolean) => {
   console.log('id', id)
+
   if (document.getElementById(id) !== null) {
     if (fullScreen) {
       document.body.removeChild(document.getElementById(id)!)
@@ -35,9 +33,10 @@ export const removeWatermark = (refs: any, fullScreen: boolean) => {
 }
 
 const setWatermark = (
-  refs: any,
+  id: string,
+  refs: Ref<HTMLElement>,
   markType: string,
-  str: any,
+  str: string,
   fullScreen: boolean,
   rotate: number,
   zIndex: string,
@@ -50,8 +49,6 @@ const setWatermark = (
   if (!refs) {
     return
   }
-  const id = 'ZxqkLTN5ZgQLauJKxTjz86Gr5y'
-
   const can = document.createElement('canvas')
   can.width = 150
   can.height = 120
@@ -61,10 +58,6 @@ const setWatermark = (
     cans.font = font
     cans.fillStyle = fillStyle
     cans.textAlign = textAlign
-    //设置在绘制文本时使用的当前文本基线
-    // cans.textBaseline = "Middle";
-    //在画布上绘制填色的文本（输出的文本，开始绘制文本的X坐标位置，开始绘制文本的Y坐标位置）
-    // cans.fillText(str, can.width / 8, can.height / 2)
     if (Array.isArray(str)) {
       str.forEach((item, index) => {
         cans.fillText(item, can.width / 8, (can.height / str.length + 1) * (index + 1))
@@ -84,12 +77,17 @@ const setWatermark = (
       draw(refs, can, id, zIndex, fullScreen, opacity)
     }
   }
-
-  return id
 }
 
-const draw = (refs, can, id, zIndex, fullScreen, opacity) => {
-  removeWatermark(refs, fullScreen)
+const draw = (
+  refs: Ref<HTMLElement>,
+  can: HTMLElement,
+  id: string,
+  zIndex: string,
+  fullScreen: boolean,
+  opacity: string
+) => {
+  removeWatermark(id, refs, fullScreen)
   const div = document.createElement('div')
   div.id = id
   div.style.pointerEvents = 'none'
@@ -115,5 +113,6 @@ export const unsetWatermark =
   ({ refs, props }) =>
   (event: MouseEvent) => {
     window.onresize = () => {}
-    removeWatermark(refs, props.fullScreen)
+    console.log('props', props)
+    removeWatermark(props.id, refs, props.fullScreen)
   }

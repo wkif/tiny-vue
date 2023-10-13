@@ -9,6 +9,7 @@ import { props, setup, defineComponent } from '@opentiny/vue-common'
 export default defineComponent({
   props: [
     ...props,
+    'id',
     'markType',
     'modelValue',
     'markText',
@@ -22,7 +23,6 @@ export default defineComponent({
     'opacity'
   ],
   setup(props, context) {
-    console.log('api', api)
     return setup({ props, context, renderless, api })
   }
 })
