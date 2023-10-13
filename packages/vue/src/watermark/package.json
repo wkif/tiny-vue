@@ -1,0 +1,15 @@
+{
+  "name": "@opentiny/vue-watermark",
+  "version": "5.10.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "index.ts",
+  "sideEffects": false,
+  "type": "module",
+  "dependencies": {
+    "@opentiny/vue-renderless": "~5.10.0",
+    "@opentiny/vue-theme": "~5.10.0",
+    "@opentiny/vue-common": "~5.10.0"
+  },
+  "license": "MIT"
+}

@@ -236,6 +236,7 @@
     "@opentiny/vue-user-head": "workspace:~",
     "@opentiny/vue-user-head-group": "workspace:~",
     "@opentiny/vue-user-link": "workspace:~",
+    "@opentiny/vue-watermark": "workspace:~",
     "@opentiny/vue-wheel": "workspace:~",
     "@opentiny/vue-wizard": "workspace:~",
     "@opentiny/vue-year-range": "workspace:~",

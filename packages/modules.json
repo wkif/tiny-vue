@@ -2679,6 +2679,19 @@
     "type": "template",
     "exclude": false
   },
+  "Watermark": {
+    "path": "vue/src/watermark/index.ts",
+    "type": "component",
+    "exclude": false,
+    "mode": [
+      "pc"
+    ]
+  },
+  "WatermarkPc": {
+    "path": "vue/src/watermark/src/pc.vue",
+    "type": "template",
+    "exclude": false
+  },
   "Wheel": {
     "path": "vue/src/wheel/index.ts",
     "type": "component",
